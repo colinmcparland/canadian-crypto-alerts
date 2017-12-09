@@ -1,31 +1,31 @@
 {
-  "name": "quadriga-alerts",
+  "name": "canadian-crypto-alerts",
   "version": "1.0.0",
-  "description": "SMS alerts for QuadrigaCX exchange.",
+  "description": "SMS alerts for Canadian cryptocoin exchanges.",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/colinmcparland/quadriga-alerts.git"
+    "url": "git+https://github.com/colinmcparland/canadian-crypto-alerts.git"
   },
   "author": "Colin McParland",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/colinmcparland/quadriga-alerts/issues"
+    "url": "https://github.com/colinmcparland/canadian-crypto-alerts/issues"
   },
   "homepage": "https://github.com/colinmcparland/quadriga-alerts#readme",
   "devDependencies": {
     "dotenv": "^4.0.0",
     "forever": "^0.15.3",
+    "inquirer": "^4.0.1",
     "request": "^2.34",
     "request-promise-native": "^1.0.5",
     "shelljs": "^0.7.8",
     "twilio": "^3.10.1"
   },
   "dependencies": {
-    "request": "^2.83.0",
-    "request-promise-native": "^1.0.5"
+
   }
 }
