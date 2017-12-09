@@ -1,5 +1,0 @@
-#!/bin/bash
-
-# Main executable for crypto alerts.  When called, run the files in /etc/cryptoalert
-cd /etc/cryptoalert
-node main.js
