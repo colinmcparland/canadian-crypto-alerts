@@ -12,6 +12,7 @@
     "inquirer": "^4.0.1",
     "nexe": "^2.0.0-rc.22",
     "request": "^2.83.0",
-    "request-promise-native": "^1.0.5"
+    "request-promise-native": "^1.0.5",
+    "sqlite3": "^3.1.13"
   }
 }

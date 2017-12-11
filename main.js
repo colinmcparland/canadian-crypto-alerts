@@ -15,6 +15,7 @@ var rp = require('request-promise-native');
 var request = require('request');
 var amount = parseFloat(process.argv.slice(process.argv.length - 1));
 var type = process.argv.slice(process.argv.length - 2)[0];
+var phnumber = process.argv.slice(process.argv.length - 3)[0];
 var twilio = require('twilio')(
   process.env.TWILIO_ID,
   process.env.TWILIO_TOKEN
@@ -95,7 +96,7 @@ function getAsk (price) {
 function sendSMS(action, price) {
   twilio.messages.create({
     from: process.env.TWILIO_PHONE,
-    to: process.env.MY_CELL,
+    to: phnumber,
     body: "QuadrigaCX average " + action[0] + " price has reached $" + price + ", time to " + action[1] + " some BTC!"
   }).then(function()  {
     shell.exec('forever stop ' + process.pid);
