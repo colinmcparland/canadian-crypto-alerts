@@ -1,7 +1,6 @@
 {
   "name": "cca",
   "version": "1.0.0",
-  "description": "",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,9 +9,16 @@
   "license": "ISC",
   "devDependencies": {
     "inquirer": "^4.0.1",
+    "lowdb": "^1.0.0",
     "nexe": "^2.0.0-rc.22",
+    "pkg": "^4.3.0-beta.1",
     "request": "^2.83.0",
     "request-promise-native": "^1.0.5",
     "sqlite3": "^3.1.13"
+  },
+  "description": "",
+  "bin": "./main.js",
+  "pkg": {
+    "assets": "./main.db"
   }
 }

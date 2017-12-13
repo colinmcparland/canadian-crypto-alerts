@@ -23,7 +23,7 @@ http
           response.setHeader('Content-Type', 'application/json');
           response.setHeader('Connection', 'keep-alive');
 
-          shell.exec('forever start main.js ' + json_postdata.number + json_postdata.type + ' ' + json_postdata.amount, function(code, out, err) {
+          shell.exec('forever start main.js ' + json_postdata.number + ' ' + json_postdata.type + ' ' + json_postdata.amount, function(code, out, err) {
             if(code !== 0) {
               response.write(JSON.stringify({status: 500, message: 'Server error!  Code' + code, err: err}));
               response.end();

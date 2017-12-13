@@ -32,12 +32,12 @@ if(type == 'Ask') {
   getAsk(amount);
   setInterval(function()  {
     getAsk(amount);
-  }, 10000);
+  }, 3000);
 } else if(type == 'Bid') {
   getBid(amount);
   setInterval(function()  {
     getBid(amount);
-  }, 10000);
+  }, 3000);
 } else {
   console.log('Error with type.');
   process.exit(1);
