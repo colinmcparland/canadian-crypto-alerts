@@ -6,7 +6,11 @@ This tool lets you input your cell phone number then set certain bid/ask prices 
 
 ```
 wget https://github.com/colinmcparland/canadian-crypto-alerts/blob/master/dist/cryptoalert-linux
+```
+```
 mv cryptoalert-linux /usr/local/bin/cryptoalert
+```
+```
 cryptoalert
 ```
 
@@ -20,6 +24,6 @@ Once downloaded, execute the program simply by typing <kbd>cryptoalert</kbd> int
  * [lowdb](https://www.npmjs.com/package/lowdb)
  * [request](https://www.npmjs.com/package/request)
  * [inquirer](https://www.npmjs.com/package/inquirer)
- * [shelljs](https://www.npmjs.com/package/shelljs
+ * [shelljs](https://www.npmjs.com/package/shelljs)
  * [twilio](https://www.npmjs.com/package/twilio)
  * [pkg](https://www.npmjs.com/package/pkg)
