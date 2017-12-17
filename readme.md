@@ -2,13 +2,37 @@
 
 This tool lets you input your cell phone number then set certain bid/ask prices for which you will be sent a text message notification. Eventually, this tool will be able to set alerts across multiple Canadian Crypto Exchanges, as well as handle alerts with different coins.
 
-###  To download (Linux only for now):
+###  To download (Linux):
 
 ```
-wget https://github.com/colinmcparland/canadian-crypto-alerts/blob/master/dist/cryptoalert-linux
+wget -O cca.zip https://github.com/colinmcparland/canadian-crypto-alerts/blob/master/dist/cca-linux.zip?raw=true
 ```
 ```
-mv cryptoalert-linux /usr/local/bin/cryptoalert
+unzip cca.zip
+```
+```
+rm cca.zip
+```
+```
+mv cca-linux /usr/local/bin/cryptoalert
+```
+```
+cryptoalert
+```
+
+###  To download (Mac):
+
+```
+wget -O cca.zip https://github.com/colinmcparland/canadian-crypto-alerts/blob/master/dist/cca-mac.zip?raw=true
+```
+```
+unzip cca.zip
+```
+```
+rm cca.zip
+```
+```
+mv cca-mac /usr/local/bin/cryptoalert
 ```
 ```
 cryptoalert
