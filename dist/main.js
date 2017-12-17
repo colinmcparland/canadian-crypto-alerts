@@ -151,7 +151,7 @@ function setAlert() {
 */
 
 function main() {
-  if(db.get('phone_number').value() == '') {
+  if(db.get('phone_number').value() == '' || db.get('phone_number').value() == undefined) {
     getPhoneNumberInput();
   } else {
     setAlert();
