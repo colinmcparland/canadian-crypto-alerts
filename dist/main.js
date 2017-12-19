@@ -5,12 +5,13 @@ var path = require('path');
 var FileSync = require('lowdb/adapters/FileSync');
 var adapter = new FileSync(path.join(path.dirname(process.execPath), '/db.json'));
 var db = low(adapter);
+const table = require('table').table;
 
 
 /**
  * Function used to send a request to the server that will start up an alert thread.
  */
-function sendRequest(type, amount, number) {
+function setAlertThread(type, amount, number) {
   var request_options = {
     method: 'POST',
     headers: {
@@ -35,6 +36,29 @@ function sendRequest(type, amount, number) {
     });
 }
 
+/**
+ * Function to fetch a list of alerts for this number
+ */
+function getAlerts(number) {
+  var request_options = {
+    method: 'GET',
+    headers: {
+      'Connection': 'keep-alive'
+    },
+    uri: 'http://www.tinybird.ca:1234/?number=' + number,
+    json: true
+  };
+
+  rp(request_options).
+    then(function(body) {
+      if(body.length == 0) {
+        console.log("No alerts set at this number.");
+      } else {
+        console.log('\n\n' + "Alerts for " + number + '\n' + table(body) + '\n\n' + "Press up or down arrow key to go to menu >" + '\n\n\n\n\n\n\n');
+      }
+    });
+}
+
 
 /**
  * Set up command line prompts to give to the user in order to get our input.
@@ -49,6 +73,7 @@ var prompt_options = [
       'Bid',
       new inquirer.Separator(),
       'Change phone number',
+      'View My Alerts'
       //todo:  list active alerts
     ]
   },
@@ -65,7 +90,7 @@ var prompt_options = [
       }
     },
     when: function(answers) {
-      if(answers.alert_type == 'Change phone number') {
+      if(answers.alert_type != 'Ask' && answers.alert_type != 'Bid') {
         return false;
       }
       return true;
@@ -137,7 +162,12 @@ function setAlert() {
     .then(function(answers) {
       if(answers.alert_type == 'Ask' || answers.alert_type == 'Bid') {
         number = db.get('phone_number').value();
-        sendRequest(answers.alert_type, answers.alert_amount, number);
+        setAlertThread(answers.alert_type, answers.alert_amount, number);
+        main();
+      } else if(answers.alert_type == 'View My Alerts') {
+        number = db.get('phone_number').value();
+        getAlerts(number);
+        main();
       } else {
         addPhoneNumber(answers.new_phone);
         main();

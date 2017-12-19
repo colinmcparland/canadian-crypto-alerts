@@ -1,6 +1,8 @@
 var http = require('http');
 var util = require('util');
 var shell = require('shelljs');
+var url = require('url');
+var forever = require('forever');
 
 http
   .createServer(function (request, response) {
@@ -38,9 +40,38 @@ http
 
         });
     }
-    else {
-      response.write('POST only, please!  (for now)');
-      response.end();
+    /*
+    Started here to process the request to get a list of alerts for a given phone number, look at using forever programmatically 
+     */
+    else if(request.method == 'GET') {
+      var query = url.parse(request.url, true).query;
+      var asks = [];
+      var bids = [];
+      var ret = [];
+
+      //  Get a list of all alerts for this number
+      if(query.number != null) {
+        console.log('phone number');
+        forever.list(false, function(err, data) {
+          for(var i = 0; i < data.length; i++) {
+            var proc = data[i];
+            // console.log(JSON.stringify(proc));
+            if(proc.file == 'main.js' && proc.args[0] == query.number) {
+              if(proc.args[1] == 'Ask') {
+                console.log('add ask');
+                asks.push([proc.args[1], proc.args[2]]);
+              } else if (proc.args[1] == 'Bid') {
+                bids.push([proc.args[1], proc.args[2]]);
+                console.log('add bid');
+              }
+            }
+          }
+
+          ret = asks.concat(bids);
+          response.write(JSON.stringify(ret));
+          response.end();
+        });
+      }
     }
   })
   .listen(1234);
